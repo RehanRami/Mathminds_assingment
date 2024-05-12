@@ -9,6 +9,8 @@ buttonfonts = ("Segoe UI Black", 20, "bold")
 
 class HomePage():
     def __init__(self):
+
+        #window setup
         self.home_window = CTk()
         self.home_window.title('HOMEPAGE')
         self.home_window.minsize(width=500,height=370)
@@ -18,10 +20,11 @@ class HomePage():
         self.app_name = CTkLabel(self.home_window,text = 'Math Minds', text_color=ORANGE,bg_color=YELLOW, font=fontlabel )
         self.app_name.place(x=115,y=20)
 
+        #charecters
 
 
 
-
+        #Buttons 
 
         self.mcq_button = CTkButton(self.home_window, text = 'Multiple Choice', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_mcq, width=150,height=50 )
         self.mcq_button.place(x=170,y=120)
