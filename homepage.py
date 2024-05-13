@@ -1,5 +1,6 @@
 from customtkinter import *
 from PIL import Image,ImageTk
+import mcq_quiz
 
 ORANGE = '#FFb900'
 YELLOW  = '#FFF370'
@@ -18,7 +19,7 @@ class HomePage():
         self.home_window.resizable(False,False)
         self.home_window.config(bg=YELLOW)
         self.app_name = CTkLabel(self.home_window,text = 'Math Minds', text_color=ORANGE,bg_color=YELLOW, font=fontlabel )
-        self.app_name.place(x=115,y=20)
+        self.app_name.place(x=105,y=10)
 
         #charecters
 
@@ -46,6 +47,10 @@ class HomePage():
     def start_mcq(self):
         print('mcq started')
         self.home_window.destroy()
+        start = mcq_quiz.MC_Quiz()
+        
+        
+
 
     def start_tf(self):
         print('tf started')
