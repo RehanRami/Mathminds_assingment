@@ -21,7 +21,7 @@ class HomePage():
         self.app_name = CTkLabel(self.home_window,text = 'Math Minds', text_color=ORANGE,bg_color=YELLOW, font=fontlabel )
         self.app_name.place(x=105,y=10)
 
-        #charecters
+        #Characters
 
 
 

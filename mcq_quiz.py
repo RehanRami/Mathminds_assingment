@@ -1,5 +1,7 @@
 from customtkinter import *
 from PIL import Image, ImageTk
+import random
+
 
 
 ORANGE = '#FFb900'
@@ -19,9 +21,26 @@ class MC_Quiz():
         self.app_name.place(x=105,y=10)
 
         # self.question_box = CTkLabel()
+        self.amount_of_questions = 10
+        self.username = None
+        self.correct_answers = 0
 
+        self.generate_questions()
 
         self.mcq_window.mainloop()
 
     def generate_questions(self):
-        pass
+        while self.amount_of_questions > 0:
+            if self.amount_of_questions == 10:
+                pass #input the username box function 
+            self.operation_list = ['*','+','-','/']
+            self.operation = random.choice(self.operation_list)
+            print(self.operation)
+
+            self.amount_of_questions -=1 
+            if self.operation == '/':
+                pass
+                
+
+            
+            
