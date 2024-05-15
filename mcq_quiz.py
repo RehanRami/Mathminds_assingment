@@ -35,7 +35,7 @@ class MC_Quiz():
         )
 
 
-        # self.question_box = CTkLabel()
+        #genenral information about the game 
         self.amount_of_questions = 10
         self.username = None
         self.correct_answers = 0
@@ -47,7 +47,7 @@ class MC_Quiz():
     def generate_questions(self):
         while self.amount_of_questions > 0:
             if self.amount_of_questions == 10:
-                self.name_entry_box = CTkEntry(self.mcq_window, placeholder_text='INPUT NAME', font=fontlabel,height=105,width=305)
+                self.name_entry_box = CTkEntry(self.mcq_window, placeholder_text='     NAME', font=fontlabel,height=105,width=305)
                 self.name_entry_box.place(x=100,y=100)
                 self.play_button = CTkButton(self.mcq_window, text = 'LETS PLAY', font=buttonfonts,text_color='white', fg_color='#FFC773', command=self.name_input, width=150,height=50 )
                 self.play_button.place(x=180,y=290)
@@ -68,7 +68,7 @@ class MC_Quiz():
         self.name = self.name_entry_box.get()
         self.username = self.name
         print(self.name)
-        if self.name == '':
+        if self.name == '' :
             pass
         else:
             self.name_entry_box.destroy()
