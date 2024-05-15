@@ -3,7 +3,6 @@ from PIL import Image, ImageTk
 import random
 
 
-
 ORANGE = '#FFb900'
 YELLOW  = '#FFF370'
 fontlabel = ("Segoe UI Black", 50, "bold")
@@ -48,7 +47,13 @@ class MC_Quiz():
     def generate_questions(self):
         while self.amount_of_questions > 0:
             if self.amount_of_questions == 10:
-                pass #input the username box function 
+                self.name_entry_box = CTkEntry(self.mcq_window, placeholder_text='INPUT NAME', font=fontlabel,height=105,width=305)
+                self.name_entry_box.place(x=100,y=100)
+                self.play_button = CTkButton(self.mcq_window, text = 'LETS PLAY', font=buttonfonts,text_color='white', fg_color='#FFC773', command=self.name_input, width=150,height=50 )
+                self.play_button.place(x=180,y=290)
+
+
+
             self.operation_list = ['*','+','-','/']
             self.operation = random.choice(self.operation_list)
             print(self.operation)
@@ -59,4 +64,14 @@ class MC_Quiz():
                 
 
             
+    def name_input(self):# stores the user's name 
+        self.name = self.name_entry_box.get()
+        self.username = self.name
+        print(self.name)
+        if self.name == '':
+            pass
+        else:
+            self.name_entry_box.destroy()
+            self.play_button.destroy()
+
             
