@@ -1,6 +1,6 @@
 from customtkinter import *
 from PIL import Image,ImageTk
-import mcq_quiz
+from mcq_quiz import MC_Quiz
 
 ORANGE = '#FFb900'
 YELLOW  = '#FFF370'
@@ -22,7 +22,22 @@ class HomePage():
         self.app_name.place(x=105,y=10)
 
         #Characters
+        
+        self.times_symbol_img = CTkImage(light_image = Image.open('images/times charecter.png'), dark_image=Image.open('images/times charecter.png'),size=(120,120))
+        self.times_symbol_display = CTkLabel(self.home_window,text='',image=self.times_symbol_img,bg_color=YELLOW)
+        self.times_symbol_display.place(x=365,y=220)
 
+        self.minus_symbol_img = CTkImage(light_image = Image.open('images/minus charecter.png'), dark_image=Image.open('images/minus charecter.png'),size=(130,80))
+        self.minus_symbol_display = CTkLabel(self.home_window,text='',image=self.minus_symbol_img,bg_color=YELLOW)
+        self.minus_symbol_display.place(x=25,y=90)
+
+        self.divide_symbol_img = CTkImage(light_image = Image.open('images/divide charecter.png'), dark_image=Image.open('images/divide charecter.png'),size=(130,130))
+        self.divide_symbol_display = CTkLabel(self.home_window,text='',image=self.divide_symbol_img,bg_color=YELLOW)
+        self.divide_symbol_display.place(x=25,y=215)
+
+        self.plus_symbol_img = CTkImage(light_image = Image.open('images/plus charecter.png'), dark_image=Image.open('images/plus charecter.png'),size=(125,125))
+        self.plus_symbol_display = CTkLabel(self.home_window,text='',image=self.plus_symbol_img,bg_color=YELLOW)
+        self.plus_symbol_display.place(x=365,y=85)
 
 
         #Buttons 
@@ -36,10 +51,8 @@ class HomePage():
         self.scoreboard_button = CTkButton(self.home_window, text = 'Scoreboard', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_scoreboard, width=168,height=50 )
         self.scoreboard_button.place(x=170,y=260)
 
-        self.button =CTkButton(self.home_window, text='close', command= self.close)
-        self.button.place(x=40,y=90)
-
-
+        # self.button =CTkButton(self.home_window, text='close', command= self.close)
+        # self.button.place(x=40,y=90)
 
 
         self.home_window.mainloop()
@@ -47,10 +60,7 @@ class HomePage():
     def start_mcq(self):
         print('mcq started')
         self.home_window.destroy()
-        start = mcq_quiz.MC_Quiz()
-        
-        
-
+        start = MC_Quiz()
 
     def start_tf(self):
         print('tf started')
@@ -63,8 +73,6 @@ class HomePage():
 
     def close(self):
         self.home_window.destroy()
-
-
 
 HomePage()
 
