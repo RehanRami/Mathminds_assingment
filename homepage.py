@@ -54,7 +54,6 @@ class HomePage():
         # self.button =CTkButton(self.home_window, text='close', command= self.close)
         # self.button.place(x=40,y=90)
 
-
         self.home_window.mainloop()
 
     def start_mcq(self):
@@ -69,7 +68,6 @@ class HomePage():
     def start_scoreboard(self):
         print('scoreboard started')
         self.home_window.destroy()
-
 
     def close(self):
         self.home_window.destroy()
