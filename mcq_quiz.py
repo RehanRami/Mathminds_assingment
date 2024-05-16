@@ -46,6 +46,7 @@ class MC_Quiz():
 
     def generate_questions(self):
         while self.amount_of_questions > 0:
+            
             if self.amount_of_questions == 10:
                 self.name_entry_box = CTkEntry(self.mcq_window, placeholder_text='     NAME', font=fontlabel,height=105,width=305)
                 self.name_entry_box.place(x=100,y=100)

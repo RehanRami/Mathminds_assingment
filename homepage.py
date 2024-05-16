@@ -52,9 +52,8 @@ class HomePage():
         self.scoreboard_button = CTkButton(self.home_window, text = 'Scoreboard', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_scoreboard, width=168,height=50 )
         self.scoreboard_button.place(x=170,y=260)
 
-        # self.button =CTkButton(self.home_window, text='close', command= self.close)
-        # self.button.place(x=40,y=90)
-
+        self.button =CTkButton(self.home_window, text='close', command= self.close)
+        self.button.place(x=40,y=90)
         self.home_window.mainloop()
 
     def start_mcq(self):

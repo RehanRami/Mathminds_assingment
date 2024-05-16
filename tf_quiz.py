@@ -43,24 +43,48 @@ class TF_Quiz():
 
     def generate_questions(self):
         while self.amount_of_questions > 0:
-            if self.amount_of_questions == 10:
-                self.name_entry_box = CTkEntry(self.tf_window, placeholder_text='     NAME', font=fontlabel,height=105,width=305)
-                self.name_entry_box.place(x=100,y=100)
-                self.play_button = CTkButton(self.tf_window, text = 'LETS PLAY', font=buttonfonts,text_color='white', fg_color='#FFC773', command=self.name_input, width=150,height=50 )
-                self.play_button.place(x=180,y=290)
             
             self.operation_list = ['*','+','-','/']
             self.operation = random.choice(self.operation_list)
-            print(self.operation)
-
-            self.amount_of_questions -=1 
+        
             if self.operation == '/':
-                pass
+                self.num1 = random.choice([2,4,6,8,10,3,6,9])
+                if self.num1 % 2 ==0 and self.num1 % 3 ==0:
+                    self.num2 = 3
+                elif self.num1 % 2 ==0:
+                    self.num2 = 2
+                elif self.num1 % 3 == 0:
+                    self.num2 = 3
+            else:
+                self.numbers = [1,2,3,4,5,6,7,8,9]
+                self.num1 = random.choice(self.numbers)
+                self.num2 = random.choice(self.numbers)
 
-
+            self.correct_answers = int(eval(f'{self.num1}{self.operation}{self.num2}'))
+            print(self.num1)
+            print(self.operation)
+            print(self.num2)
+            print(self.correct_answers)
 
             
 
+            
+
+
+
+
+            self.amount_of_questions -=1 
+
+
+    def get_name(self):
+        while True:
+            self.name_entry_box = CTkEntry(self.tf_window, placeholder_text='     NAME', font=fontlabel,height=105,width=305)
+            self.name_entry_box.place(x=100,y=100)
+            self.play_button = CTkButton(self.tf_window, text = 'LETS PLAY', font=buttonfonts,text_color='white', fg_color='#FFC773', command=self.name_input, width=150,height=50 )
+            self.play_button.place(x=180,y=290)
+            self.proceed = False
+            if self.proceed == True:  
+                break 
 
 
 
@@ -71,5 +95,10 @@ class TF_Quiz():
         if self.name == '':
             pass
         else:
+            self.proceed = True
             self.name_entry_box.destroy()
             self.play_button.destroy()
+
+
+
+TF_Quiz()
