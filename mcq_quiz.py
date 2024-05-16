@@ -7,7 +7,7 @@ ORANGE = '#FFb900'
 YELLOW  = '#FFF370'
 fontlabel = ("Segoe UI Black", 50, "bold")
 buttonfonts = ("Segoe UI Black", 20, "bold")
-THEME_COLOR = "#375362"
+
 
 
 class MC_Quiz():

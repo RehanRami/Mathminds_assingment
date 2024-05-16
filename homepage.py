@@ -1,6 +1,7 @@
 from customtkinter import *
 from PIL import Image,ImageTk
 from mcq_quiz import MC_Quiz
+from tf_quiz import TF_Quiz
 
 ORANGE = '#FFb900'
 YELLOW  = '#FFF370'
@@ -64,6 +65,7 @@ class HomePage():
     def start_tf(self):
         print('tf started')
         self.home_window.destroy()
+        start = TF_Quiz()
 
     def start_scoreboard(self):
         print('scoreboard started')
