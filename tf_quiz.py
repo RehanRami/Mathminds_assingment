@@ -1,5 +1,7 @@
 from customtkinter import *
 import random
+from PIL import Image,ImageTk
+from stopwatch import Stopwatch
 
 
 ORANGE = '#FFb900'
@@ -20,30 +22,24 @@ class TF_Quiz():
         self.app_name = CTkLabel(self.tf_window, text='Math Minds', text_color=ORANGE,bg_color=YELLOW, font=fontlabel )
         self.app_name.place(x=105,y=10)
 
-        # Canvas 
-        self.canvas = CTkCanvas(self.tf_window,width=300, height=100, bg="white")
-       
-        self.canvas.place(x=100,y=100)
-        self.canvas.create_text(
-            150,
-            50,
-            text="Some Questions",
-            fill="black",
-            font=("Arial", 20, "bold")
-        )
-
         self.amount_of_questions = 10
         self.username = None
-        self.correct_answers = 0
+        self.answers_correct = 0
 
-        self.generate_questions()
+        if self.amount_of_questions == 10:
+            self.get_name()
+            # Stopwatch.start(self)
+            
+        else:   
+            self.generate_questions()
 
         self.tf_window.mainloop()
 
-
     def generate_questions(self):
-        while self.amount_of_questions > 0:
-            
+
+
+        if self.amount_of_questions > 0:
+            #question maker 
             self.operation_list = ['*','+','-','/']
             self.operation = random.choice(self.operation_list)
         
@@ -60,31 +56,85 @@ class TF_Quiz():
                 self.num1 = random.choice(self.numbers)
                 self.num2 = random.choice(self.numbers)
 
-            self.correct_answers = int(eval(f'{self.num1}{self.operation}{self.num2}'))
-            print(self.num1)
-            print(self.operation)
-            print(self.num2)
-            print(self.correct_answers)
+            self.correct_answer = int(eval(f'{self.num1}{self.operation}{self.num2}'))
+            #
+            self.user_response = None
+            self.question_baser = random.choice([True,False])
+            self.display_answer = None
+            if self.question_baser == True:
+                self.display_answer = self.correct_answer
+            else:
+                x = random.choice([-5,5])
+                self.display_answer = self.correct_answer + x
+            # Canvas 
+            self.canvas = CTkCanvas(self.tf_window,width=300, height=100, bg="white")
+       
+            self.canvas.place(x=100,y=100)
+            self.canvas.create_text(
+            150,
+            50,
+            text=f'{self.num1} {self.operation} {self.num2} = {self.display_answer}',
+            fill="black",
+            font=("Arial", 20, "bold")
+            )
 
-            
+            self.true_button_img = CTkImage(light_image=Image.open('images/True button.png'), dark_image=Image.open('images/True button.png'),size=(160,130))
+            self.true_button = CTkButton(self.tf_window,text='', image=self.true_button_img,command=self.true_button_cmd,bg_color=YELLOW,border_color=YELLOW,)
+            self.true_button.place(x=30,y=230)
 
-            
-
-
-
+            self.false_button_img = CTkImage(light_image=Image.open('images/False button.png'), dark_image=Image.open('images/False button.png'),size=(160,130))
+            self.false_button = CTkButton(self.tf_window,text='', image=self.false_button_img,command=self.false_button_cmd,bg_color=YELLOW,border_color=YELLOW,border_width=0)
+            self.false_button.place(x=290,y=230) 
 
             self.amount_of_questions -=1 
+            self.tf_window.mainloop()
+        else:
+            # Stopwatch.stop(self)
+            # self.time = str(Stopwatch.duration(self))
+            self.true_button.destroy()
+            self.false_button.destroy()
+            self.canvas.destroy()
+            self.label = CTkLabel(self.tf_window,text = self.answers_correct)
+            self.label.place(x=150,y=150)
+            self.name_display = CTkLabel(self.tf_window,text=self.username, font=fontlabel)
+            self.name_display.place(x=20,y=20)
+            self.crown_img = CTkImage(light_image=Image.open('images/crown.png'), dark_image=Image.open('images/crown.png'),size=(160,130))
+            self.crown_display = CTkLabel(self.tf_window,text='',image=self.crown_img,bg_color=YELLOW)
+            self.crown_display.place(x=175,y=75)
+        
+
+
+
+    def true_button_cmd(self):
+        self.user_response = True
+        self.check_answer()
+        
+    def false_button_cmd(self):
+        self.user_response = False
+        self.check_answer()
+
+
+    def check_answer(self):
+        self.true_button.destroy()
+        self.false_button.destroy()
+        self.canvas.destroy()
+        if self.user_response == self.question_baser:
+            self.answers_correct += 1
+        else:
+            self.answers_correct = self.answers_correct
+        
+        
+        self.generate_questions()
 
 
     def get_name(self):
-        while True:
             self.name_entry_box = CTkEntry(self.tf_window, placeholder_text='     NAME', font=fontlabel,height=105,width=305)
             self.name_entry_box.place(x=100,y=100)
             self.play_button = CTkButton(self.tf_window, text = 'LETS PLAY', font=buttonfonts,text_color='white', fg_color='#FFC773', command=self.name_input, width=150,height=50 )
             self.play_button.place(x=180,y=290)
             self.proceed = False
-            if self.proceed == True:  
-                break 
+            self.tf_window.mainloop() 
+                 
 
 
 
@@ -98,6 +148,7 @@ class TF_Quiz():
             self.proceed = True
             self.name_entry_box.destroy()
             self.play_button.destroy()
+            self.generate_questions()
 
 
 
