@@ -25,11 +25,12 @@ class TF_Quiz():
         self.amount_of_questions = 10
         self.username = None
         self.answers_correct = 0
+        self.stopwatch = Stopwatch(2)
+
 
         if self.amount_of_questions == 10:
             self.get_name()
-            # Stopwatch.start(self)
-            
+            self.stopwatch.start()
         else:   
             self.generate_questions()
 
@@ -64,7 +65,7 @@ class TF_Quiz():
             if self.question_baser == True:
                 self.display_answer = self.correct_answer
             else:
-                x = random.choice([-5,5])
+                x = random.choice([4,-4,1,-3,3,-1,2,-2,-5,5])
                 self.display_answer = self.correct_answer + x
             # Canvas 
             self.canvas = CTkCanvas(self.tf_window,width=300, height=100, bg="white")
@@ -89,18 +90,39 @@ class TF_Quiz():
             self.amount_of_questions -=1 
             self.tf_window.mainloop()
         else:
-            # Stopwatch.stop(self)
-            # self.time = str(Stopwatch.duration(self))
             self.true_button.destroy()
             self.false_button.destroy()
             self.canvas.destroy()
-            self.label = CTkLabel(self.tf_window,text = self.answers_correct)
-            self.label.place(x=150,y=150)
+            self.stopwatch.stop()
+
+
+            self.time_display = CTkLabel(self.tf_window,text=round(self.stopwatch.duration,2), font=fontlabel, bg_color=YELLOW)
+            self.time_display.place(x=315,y=295)
+            self.time_taken_label = CTkLabel(self.tf_window,text="Time Take", font=("Segoe UI Black", 15, "bold"), bg_color=YELLOW)
+            self.time_taken_label.place(x=315,y=270)
+
+            self.answerlabel = CTkLabel(self.tf_window,text = f'{self.answers_correct}/10', font=fontlabel, bg_color=YELLOW)
+            self.answerlabel.place(x=90,y=295)
+            self.question_answered_label = CTkLabel(self.tf_window, text = 'Answers Correct', font =  ("Segoe UI Black", 15, "bold"), bg_color=YELLOW )
+            if len(self.username) > 6:
+                x = 60
+            else:
+                x=80
+            self.question_answered_label.place(x=x,y=270)
+            
             self.name_display = CTkLabel(self.tf_window,text=self.username, font=fontlabel,bg_color=YELLOW)
             self.name_display.place(x=175,y=200)
             self.crown_img = CTkImage(light_image=Image.open('images/crown.png'), dark_image=Image.open('images/crown.png'),size=(160,130))
             self.crown_display = CTkLabel(self.tf_window,text='',image=self.crown_img,bg_color=YELLOW)
             self.crown_display.place(x=175,y=75)
+
+            #uploading data
+            with open('database.json',mode='w') as datafile:
+                pass
+
+
+            
+            
         
 
 
