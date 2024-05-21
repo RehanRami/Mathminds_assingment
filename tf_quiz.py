@@ -121,11 +121,6 @@ class TF_Quiz():
                 pass
 
 
-            
-            
-        
-
-
 
     def true_button_cmd(self):
         self.user_response = True
@@ -156,9 +151,6 @@ class TF_Quiz():
             self.play_button.place(x=180,y=290)
             self.proceed = False
             self.tf_window.mainloop() 
-                 
-
-
 
     def name_input(self):
         self.name = self.name_entry_box.get()
@@ -174,4 +166,3 @@ class TF_Quiz():
 
 
 
-TF_Quiz()
