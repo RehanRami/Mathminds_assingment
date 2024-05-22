@@ -44,16 +44,16 @@ class HomePage():
         #Buttons 
 
         self.mcq_button = CTkButton(self.home_window, text = 'Multiple Choice', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_mcq, width=150,height=50 )
-        self.mcq_button.place(x=170,y=120)
+        self.mcq_button.place(x=170,y=110)
 
         self.tf_button = CTkButton(self.home_window, text = 'True/False', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_tf, width=168,height=50 )
-        self.tf_button.place(x=170,y=190)
+        self.tf_button.place(x=170,y=180)
 
         self.scoreboard_button = CTkButton(self.home_window, text = 'Scoreboard', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_scoreboard, width=168,height=50 )
-        self.scoreboard_button.place(x=170,y=260)
+        self.scoreboard_button.place(x=170,y=250)
 
-        self.button =CTkButton(self.home_window, text='close', command= self.close)
-        self.button.place(x=40,y=90)
+        self.button =CTkButton(self.home_window, text='close', command= self.close, width=70, height = 20, bg_color=YELLOW, fg_color=ORANGE, hover_color=YELLOW)
+        self.button.place(x=210,y=320)
         self.home_window.mainloop()
 
     def start_mcq(self):
