@@ -2,6 +2,7 @@ from customtkinter import *
 from PIL import Image,ImageTk
 from mcq_quiz import MC_Quiz
 from tf_quiz import TF_Quiz
+from scoreboard import Scoreboard
 
 ORANGE = '#FFb900'
 YELLOW  = '#FFF370'
@@ -69,6 +70,7 @@ class HomePage():
     def start_scoreboard(self):
         print('scoreboard started')
         self.home_window.destroy()
+        start = Scoreboard()
 
     def close(self):
         self.home_window.destroy()

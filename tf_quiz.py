@@ -2,6 +2,7 @@ from customtkinter import *
 import random
 from PIL import Image,ImageTk
 from stopwatch import Stopwatch
+import json
 
 
 ORANGE = '#FFb900'
@@ -117,9 +118,18 @@ class TF_Quiz():
             self.crown_display.place(x=175,y=75)
 
             #uploading data
-            with open('database.json',mode='w') as datafile:
-                pass
+            with open("database.json", "r") as file:
+                data = json.load(file)
+    
+            score_key = f"{self.answers_correct}/10"
+    
+            data["tf"][score_key].append([self.username, score_key, str(round(self.stopwatch.duration,2))])
 
+            with open("database.json", "w") as file:
+                json.dump(data, file, indent=4)
+                
+                
+            
 
 
     def true_button_cmd(self):
@@ -164,5 +174,13 @@ class TF_Quiz():
             self.play_button.destroy()
             self.generate_questions()
 
+    def add_tf_result(score, user_name, time_taken):
+        with open("data.json", "r") as file:
+            data = json.load(file)
+    
+        score_key = f"{score}/10"
+    
+        data["tf"][score_key].append([user_name, score_key, str(time_taken)])
 
-
+        with open("data.json", "w") as file:
+            json.dump(data, file, indent=4)

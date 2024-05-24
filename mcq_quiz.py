@@ -2,6 +2,7 @@ from customtkinter import *
 from PIL import Image, ImageTk
 import random
 from stopwatch import Stopwatch
+import json
 
 
 ORANGE = '#FFb900'
@@ -137,6 +138,17 @@ class MC_Quiz():
             self.crown_img = CTkImage(light_image=Image.open('images/crown.png'), dark_image=Image.open('images/crown.png'),size=(160,130))
             self.crown_display = CTkLabel(self.mcq_window,text='',image=self.crown_img,bg_color=YELLOW)
             self.crown_display.place(x=175,y=75)
+
+            #uploading data
+            with open("database.json", "r") as file:
+                data = json.load(file)
+    
+            score_key = f"{self.answers_correct}/10"
+    
+            data["mcq"][score_key].append([self.username, score_key, str(round(self.stopwatch.duration,2))])
+
+            with open("database.json", "w") as file:
+                json.dump(data, file, indent=4)
 
     def button1_cmd(self):
         self.user_response = 1
