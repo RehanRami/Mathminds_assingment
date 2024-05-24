@@ -53,8 +53,8 @@ class HomePage():
         self.scoreboard_button = CTkButton(self.home_window, text = 'Scoreboard', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_scoreboard, width=168,height=50 )
         self.scoreboard_button.place(x=170,y=250)
 
-        self.button =CTkButton(self.home_window, text='close', command= self.close, width=70, height = 20, bg_color=YELLOW, fg_color=ORANGE, hover_color=YELLOW)
-        self.button.place(x=210,y=320)
+        self.close_button =CTkButton(self.home_window, text='close', command= self.close, width=70, height = 20, bg_color=YELLOW, fg_color=ORANGE, hover_color=YELLOW)
+        self.close_button.place(x=210,y=320)
         self.home_window.mainloop()
 
     def start_mcq(self):
@@ -75,8 +75,8 @@ class HomePage():
     def close(self):
         self.home_window.destroy()
 
-HomePage()
 
+HomePage()
 
 
 

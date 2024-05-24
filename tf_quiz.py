@@ -23,6 +23,9 @@ class TF_Quiz():
         self.app_name = CTkLabel(self.tf_window, text='Math Minds', text_color=ORANGE,bg_color=YELLOW, font=fontlabel )
         self.app_name.place(x=105,y=10)
 
+        self.back_home = CTkButton(self.tf_window, text='home', bg_color=YELLOW, font=("Segoe UI Black", 10, "bold"), command=self.back_home, width=70, height=10)
+        self.back_home.place(x=0,y=0)
+
         self.amount_of_questions = 10
         self.username = None
         self.answers_correct = 0
@@ -184,3 +187,10 @@ class TF_Quiz():
 
         with open("data.json", "w") as file:
             json.dump(data, file, indent=4)
+
+
+    def back_home(self):
+        
+        self.tf_window.destroy()
+        import homepage
+        home = homepage.HomePage()

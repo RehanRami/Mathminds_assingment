@@ -18,9 +18,9 @@ class Scoreboard():
         self.scoreboard_window.maxsize(width=500,height=400)
         self.scoreboard_window.resizable(False,False)
         self.scoreboard_window.config(bg=YELLOW)
-        self.scoreboard_img = CTkImage(light_image = Image.open('images/scoreboard4.png'), dark_image=Image.open('images/scoreboard4.png'),size=(500,380))
-        self.scorebaord_display = CTkLabel(self.scoreboard_window,text='',image=self.scoreboard_img,bg_color= YELLOW)
-        self.scorebaord_display.place(x=0,y= 40)
+        # self.scoreboard_img = CTkImage(light_image = Image.open('images/scoreboard4.png'), dark_image=Image.open('images/scoreboard4.png'),size=(500,380))
+        # self.scoreboard_display = CTkLabel(self.scoreboard_window,text='',image=self.scoreboard_img,bg_color= YELLOW)
+        # self.scoreboard_display.place(x=0,y= 40)
         self.app_name = CTkLabel(self.scoreboard_window,text = 'Math Geniuses', text_color=ORANGE,bg_color=YELLOW, font=fontlabel )
         self.app_name.place(x=105,y=0)
 
@@ -29,8 +29,35 @@ class Scoreboard():
         self.mcq_scores = self.get_top_10_mcq_results()
         print(self.mcq_scores)
 
-        self.home_button = CTkButton(self.scoreboard_window, text = 'Home', bg_color=YELLOW, command=self.home)
-        self.home_button.place(x=0,y=0)
+        self.back_home = CTkButton(self.scoreboard_window, text='home', bg_color=YELLOW, font=("Segoe UI Black", 10, "bold"), command=self.back_home, width=70, height=10)
+        self.back_home.place(x=0,y=0)
+
+        self.tf_y_cords = 100
+        self.mcq_y_cords = 100
+
+        self.mcq_name = CTkLabel(self.scoreboard_window, text = 'Multiple Choice', font = ("Segoe UI Black", 25, "bold"), bg_color=YELLOW, width=40, text_color=ORANGE)
+        self.mcq_name.place(x=270, y=80)
+
+        self.tf_name = CTkLabel(self.scoreboard_window, text = 'True / False', font = ("Segoe UI Black", 25, "bold"), bg_color=YELLOW, width=40, text_color=ORANGE)
+        self.tf_name.place(x=50, y=80)
+
+        for names in self.tf_scores:
+            self.tf_y_cords +=25
+            self.name = names[0]
+            self.score = names[1]
+            self.time = names[2]
+            self.details = (f'{self.name} , {self.score}, {self.time}')
+            self.name_display = CTkLabel(self.scoreboard_window, text = self.details, font = buttonfonts, bg_color=YELLOW, width=40, text_color='#dc2f02')
+            self.name_display.place(x=50, y=self.tf_y_cords)
+
+        for names in self.mcq_scores:
+            self.mcq_y_cords +=25
+            self.name = names[0]
+            self.score = names[1]
+            self.time = names[2]
+            self.details = (f'{self.name} , {self.score}, {self.time}')
+            self.name_display = CTkLabel(self.scoreboard_window, text = self.details, font = buttonfonts, bg_color=YELLOW, width=40, text_color='#dc2f02')
+            self.name_display.place(x=270, y=self.mcq_y_cords)
 
 
 
@@ -76,8 +103,10 @@ class Scoreboard():
         return self.all_results[:10]
     
 
-    # def home(self):
-    #     self.scoreboard_window.destroy()
-    #     home = homepage.HomePage()
+    def back_home(self):
+        
+        self.scoreboard_window.destroy()
+        import homepage
+        home = homepage.HomePage()
         
 

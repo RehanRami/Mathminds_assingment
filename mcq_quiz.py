@@ -5,6 +5,7 @@ from stopwatch import Stopwatch
 import json
 
 
+
 ORANGE = '#FFb900'
 YELLOW  = '#FFF370'
 fontlabel = ("Segoe UI Black", 50, "bold")
@@ -23,6 +24,9 @@ class MC_Quiz():
         self.mcq_window.config(bg=YELLOW)
         self.app_name = CTkLabel(self.mcq_window,text = 'Math Minds', text_color=ORANGE,bg_color=YELLOW, font=fontlabel )
         self.app_name.place(x=105,y=10)
+
+        self.back_home = CTkButton(self.mcq_window, text='home', bg_color=YELLOW, font=("Segoe UI Black", 10, "bold"), command=self.back_home, width=70, height=10)
+        self.back_home.place(x=0,y=0)
 
         #genenral information about the game 
         self.amount_of_questions = 10
@@ -201,4 +205,13 @@ class MC_Quiz():
             self.play_button.destroy()
             self.generate_questions()
 
+    def back_home(self):
+        self.mcq_window.destroy()
+        import homepage
+      
+        
+        
+        
+  
+        
             
