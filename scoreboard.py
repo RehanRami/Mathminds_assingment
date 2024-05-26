@@ -3,7 +3,7 @@ from PIL import Image, ImageTk
 
 import json
 
-
+# Predefined constants : These are values which are going to be used across the application 
 ORANGE = '#FFb900'
 YELLOW  = '#FFF370'
 fontlabel = ("Segoe UI Black", 40, "bold")
@@ -12,36 +12,39 @@ buttonfonts = ("Segoe UI Black", 20, "bold")
 class Scoreboard():
     def __init__(self):
 
-
+        # Window setup
         self.scoreboard_window = CTk()
-        self.scoreboard_window.minsize(width=500,height=400)
-        self.scoreboard_window.maxsize(width=500,height=400)
+        self.scoreboard_window.minsize(width=500,height=400)# Sets the window dimensions
+        self.scoreboard_window.maxsize(width=500,height=400)# Sets the window dimensions
         self.scoreboard_window.resizable(False,False)
-        self.scoreboard_window.config(bg=YELLOW)
-        # self.scoreboard_img = CTkImage(light_image = Image.open('images/scoreboard4.png'), dark_image=Image.open('images/scoreboard4.png'),size=(500,380))
-        # self.scoreboard_display = CTkLabel(self.scoreboard_window,text='',image=self.scoreboard_img,bg_color= YELLOW)
-        # self.scoreboard_display.place(x=0,y= 40)
+        self.scoreboard_window.config(bg=YELLOW)# Sets the window color
+
+        # Displays the App name at the top of the window
         self.app_name = CTkLabel(self.scoreboard_window,text = 'Math Geniuses', text_color=ORANGE,bg_color=YELLOW, font=fontlabel )
         self.app_name.place(x=105,y=0)
 
+        # Lists which contain the top 10 performers of each quiz
         self.tf_scores = self.get_top_10_tf_results()
         print(self.tf_scores)
         self.mcq_scores = self.get_top_10_mcq_results()
         print(self.mcq_scores)
 
+        # Initialises and displays the back home button (allows the user to return back home )
         self.back_home = CTkButton(self.scoreboard_window, text='home', bg_color=YELLOW, font=("Segoe UI Black", 10, "bold"), command=self.back_home, width=70, height=10)
         self.back_home.place(x=0,y=0)
 
+        # these are coordinates which are going to be used to display the results in a list format
         self.tf_y_cords = 100
         self.mcq_y_cords = 100
 
+        # Labels which shows which category of results are begin displayed
         self.mcq_name = CTkLabel(self.scoreboard_window, text = 'Multiple Choice', font = ("Segoe UI Black", 25, "bold"), bg_color=YELLOW, width=40, text_color=ORANGE)
         self.mcq_name.place(x=270, y=80)
 
         self.tf_name = CTkLabel(self.scoreboard_window, text = 'True / False', font = ("Segoe UI Black", 25, "bold"), bg_color=YELLOW, width=40, text_color=ORANGE)
         self.tf_name.place(x=50, y=80)
 
-        for names in self.tf_scores:
+        for names in self.tf_scores: # Loops through the list and displays the results on the window for True/False quiz
             self.tf_y_cords +=25
             self.name = names[0]
             self.score = names[1]
@@ -50,7 +53,7 @@ class Scoreboard():
             self.name_display = CTkLabel(self.scoreboard_window, text = self.details, font = buttonfonts, bg_color=YELLOW, width=40, text_color='#dc2f02')
             self.name_display.place(x=50, y=self.tf_y_cords)
 
-        for names in self.mcq_scores:
+        for names in self.mcq_scores:# Loops through the list and displays the results on the window for Multiple choice quiz
             self.mcq_y_cords +=25
             self.name = names[0]
             self.score = names[1]
@@ -103,7 +106,7 @@ class Scoreboard():
         return self.all_results[:10]
     
 
-    def back_home(self):
+    def back_home(self):# Destroys the Scoreboard page and starts the Homepage
         
         self.scoreboard_window.destroy()
         import homepage
