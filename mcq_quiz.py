@@ -49,6 +49,9 @@ class MC_Quiz():
 
     def generate_questions(self): # makes the question and the buttons 
 
+        self.current_score_display = CTkLabel(self.mcq_window, text = f'{self.answers_correct}/10', text_color=ORANGE, font=buttonfonts, bg_color=YELLOW)
+        self.current_score_display.place(x=225, y=290)
+
         if self.amount_of_questions > 0: # check if the user has completed the quiz
 
             #chooses a random operation for the question
@@ -201,6 +204,7 @@ class MC_Quiz():
         self.button3.destroy()
         self.button4.destroy()
         self.canvas.destroy()
+        self.current_score_display.destroy()
 
         #Checks if user's response matches with the button which the correct value was set to 
         if self.user_response == self.button_chooser:

@@ -49,6 +49,9 @@ class TF_Quiz():
 
         if self.amount_of_questions > 0:# check if the user has completed the quiz
             
+            self.current_score_display = CTkLabel(self.tf_window, text = f'{self.answers_correct}/10', text_color=ORANGE, font=buttonfonts, bg_color=YELLOW)
+            self.current_score_display.place(x=225, y=270)
+
             #chooses a random operation for the question
             self.operation_list = ['*','+','-','/']
             self.operation = random.choice(self.operation_list)
@@ -171,6 +174,7 @@ class TF_Quiz():
         self.true_button.destroy()
         self.false_button.destroy()
         self.canvas.destroy()
+        self.current_score_display.destroy()
         #Checks if user's response matches with the question baser 
         if self.user_response == self.question_baser:
             self.answers_correct += 1 #adds 1 to the amount of questions the user correctly answered
