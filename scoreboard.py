@@ -30,7 +30,7 @@ class Scoreboard():
         print(self.mcq_scores)
 
         # Initialises and displays the back home button (allows the user to return back home )
-        self.back_home = CTkButton(self.scoreboard_window, text='home', bg_color=YELLOW, font=("Segoe UI Black", 10, "bold"), command=self.back_home, width=70, height=10)
+        self.back_home = CTkButton(self.scoreboard_window, text='home', bg_color=YELLOW, font=("Segoe UI Black", 10, "bold"), command=self.back_home, width=70, height=10, fg_color=ORANGE, hover_color='#ff7b00')
         self.back_home.place(x=0,y=0)
 
         # these are coordinates which are going to be used to display the results in a list format

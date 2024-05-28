@@ -51,19 +51,19 @@ class HomePage():
         # Buttons for the 4 main functions 
 
         # Initialises and displays the Multiple chioce button
-        self.mcq_button = CTkButton(self.home_window, text = 'Multiple Choice', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_mcq, width=150,height=50 )
+        self.mcq_button = CTkButton(self.home_window, text = 'Multiple Choice', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_mcq, width=150,height=50, hover_color='#ff7b00' )
         self.mcq_button.place(x=170,y=110)
 
         # Initialises and displays the True/False button
-        self.tf_button = CTkButton(self.home_window, text = 'True/False', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_tf, width=168,height=50 )
+        self.tf_button = CTkButton(self.home_window, text = 'True/False', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_tf, width=168,height=50, hover_color='#ff7b00' )
         self.tf_button.place(x=170,y=180)
 
         # Initialises and displays the Scoreboard button
-        self.scoreboard_button = CTkButton(self.home_window, text = 'Scoreboard', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_scoreboard, width=168,height=50 )
+        self.scoreboard_button = CTkButton(self.home_window, text = 'Scoreboard', font=buttonfonts,text_color='white', fg_color=ORANGE, command=self.start_scoreboard, width=168,height=50, hover_color='#ff7b00' )
         self.scoreboard_button.place(x=170,y=250)
 
         # Initialises and displays the close button
-        self.close_button =CTkButton(self.home_window, text='close', command= self.close, width=70, height = 20, bg_color=YELLOW, fg_color=ORANGE, hover_color=YELLOW)
+        self.close_button =CTkButton(self.home_window, text='close', command= self.close, width=70, height = 20, bg_color=YELLOW, fg_color=ORANGE, hover_color='#ff7b00')
         self.close_button.place(x=210,y=320)
         self.home_window.mainloop()
 

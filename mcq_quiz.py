@@ -28,7 +28,7 @@ class MC_Quiz():
         self.app_name.place(x=105,y=10)
 
         # Initialises and displays the back home button (allows the user to return back home )
-        self.back_home = CTkButton(self.mcq_window, text='home', bg_color=YELLOW, font=("Segoe UI Black", 10, "bold"), command=self.back_home, width=70, height=10)
+        self.back_home = CTkButton(self.mcq_window, text='home', bg_color=YELLOW, font=("Segoe UI Black", 10, "bold"), command=self.back_home, width=70, height=10, fg_color=ORANGE, hover_color='#ff7b00')
         self.back_home.place(x=0,y=0)
 
         #genenral information about the game  (these are values which are going to be used to update the database )
