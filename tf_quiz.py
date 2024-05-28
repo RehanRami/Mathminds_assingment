@@ -118,6 +118,7 @@ class TF_Quiz():
             self.true_button.destroy()
             self.false_button.destroy()
             self.canvas.destroy()
+            self.current_score_display.destroy()
             self.stopwatch.stop()# stops the stopwatch
 
             # Displays a label and the ammount of time the user took to complete the quiz 
@@ -190,6 +191,8 @@ class TF_Quiz():
             self.name_entry_box.place(x=100,y=100)
             self.play_button = CTkButton(self.tf_window, text = 'LETS PLAY', font=buttonfonts,text_color='white', fg_color='#FFC773', command=self.name_input, width=150,height=50 )
             self.play_button.place(x=180,y=290)
+            self.error_input = CTkLabel(self.tf_window, text='The name must be less than 10 letters and must not include any spaces or symbols', text_color='red', bg_color=YELLOW, font=('Arial',9,'bold'))
+            self.error_input.place(x=70, y=210)
             self.proceed = False
             self.tf_window.mainloop() 
 
@@ -197,12 +200,28 @@ class TF_Quiz():
         self.name = self.name_entry_box.get()
         self.username = self.name
         print(self.name)
+        self.symbols = ['!','@','#','$','%','^','&','*','(',')','-','_','+','=',',','.','<','>','/','?',':',';','"',"'",'`','~',']','[','{','}',"|"]
+        self.split_username = list(self.name)
+
+        for letter in self.split_username:
+            if letter in self.symbols:
+                self.symbol_exists = True
+                break
+            else:
+                self.symbol_exists = False
         if self.name == '':
+            pass
+        elif len(self.name) > 10:
+            pass
+        elif self.name.count(' ')>0:
+            pass
+        elif self.symbol_exists == True:
             pass
         else:
             self.proceed = True
             self.name_entry_box.destroy()
             self.play_button.destroy()
+            self.error_input.destroy()
             self.generate_questions()
 
 
