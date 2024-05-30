@@ -57,7 +57,7 @@ class TF_Quiz():
             self.operation = random.choice(self.operation_list)
         
             if self.operation == '/':# checks if the operation is division and if so chooses a set of numbers which the answer can only be a whole number 
-                self.num1 = random.choice([2,4,6,8,10,3,6,9])
+                self.num1 = random.choice([2,4,6,8,10,3,9])
                 if self.num1 % 2 ==0 and self.num1 % 3 ==0:
                     self.num2 = 3
                 elif self.num1 % 2 ==0:
