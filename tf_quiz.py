@@ -122,7 +122,7 @@ class TF_Quiz():
             self.stopwatch.stop()# stops the stopwatch
 
             # Displays a label and the ammount of time the user took to complete the quiz 
-            self.time_display = CTkLabel(self.tf_window,text=round(self.stopwatch.duration,2), font=fontlabel, bg_color=YELLOW)
+            self.time_display = CTkLabel(self.tf_window,text=f'{round(self.stopwatch.duration,2)}s', font=fontlabel, bg_color=YELLOW)
             self.time_display.place(x=315,y=295)
             self.time_taken_label = CTkLabel(self.tf_window,text="Time Take", font=("Segoe UI Black", 15, "bold"), bg_color=YELLOW)
             self.time_taken_label.place(x=315,y=270)
