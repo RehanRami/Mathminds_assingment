@@ -14,14 +14,14 @@ class Scoreboard():
 
         # Window setup
         self.scoreboard_window = CTk()
-        self.scoreboard_window.minsize(width=500,height=400)# Sets the window dimensions
-        self.scoreboard_window.maxsize(width=500,height=400)# Sets the window dimensions
+        self.scoreboard_window.minsize(width=600,height=400)# Sets the window dimensions
+        self.scoreboard_window.maxsize(width=600,height=400)# Sets the window dimensions
         self.scoreboard_window.resizable(False,False)
         self.scoreboard_window.config(bg=YELLOW)# Sets the window color
 
         # Displays the App name at the top of the window
         self.app_name = CTkLabel(self.scoreboard_window,text = 'Math Geniuses', text_color=ORANGE,bg_color=YELLOW, font=fontlabel )
-        self.app_name.place(x=105,y=0)
+        self.app_name.place(x=155,y=0)
 
         # Lists which contain the top 10 performers of each quiz
         self.tf_scores = self.get_top_10_tf_results()
@@ -39,7 +39,7 @@ class Scoreboard():
 
         # Labels which shows which category of results are begin displayed
         self.mcq_name = CTkLabel(self.scoreboard_window, text = 'Multiple Choice', font = ("Segoe UI Black", 25, "bold"), bg_color=YELLOW, width=40, text_color=ORANGE)
-        self.mcq_name.place(x=270, y=80)
+        self.mcq_name.place(x=320, y=80)
 
         self.tf_name = CTkLabel(self.scoreboard_window, text = 'True / False', font = ("Segoe UI Black", 25, "bold"), bg_color=YELLOW, width=40, text_color=ORANGE)
         self.tf_name.place(x=50, y=80)
@@ -60,7 +60,7 @@ class Scoreboard():
             self.time = names[2]
             self.details = (f'{self.name} , {self.score}, {self.time}')
             self.name_display = CTkLabel(self.scoreboard_window, text = self.details, font = buttonfonts, bg_color=YELLOW, width=40, text_color='#dc2f02')
-            self.name_display.place(x=270, y=self.mcq_y_cords)
+            self.name_display.place(x=320, y=self.mcq_y_cords)
 
 
 
